@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<!-- Axentix CSS minified version -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@1.0.0/dist/css/axentix.min.css"> 
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
+	</head>
+	<body>
+		<header>
+			<nav class="navbar shadow-1 primary">
+				<a href=""{{ path('app_home')}}"" class="navbar-brand">4coin</a>
+				<div class="navbar-menu ml-auto">
+					<a class="navbar-link" href="#">Link 1</a>
+					<a class="navbar-link" href="#">Link 2</a>
+					<a class="navbar-link" href="#">Link 3</a>
+					<a class="navbar-link" href="#">Link 4</a>
+				</div>
+			</nav>
+		</header>
 
-        {% block javascripts %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		<main>
+				{% block body %}{% endblock %}
+		</main>
+
+		<footer class="footer primary">
+			Copyright © 2020 - Example
+		</footer>
+		
+		<!-- Axentix JS minified version -->
+		<script src="https://cdn.jsdelivr.net/npm/axentix@1.0.0/dist/js/axentix.min.js"></script>
+		{% block javascripts %}{% endblock %}
+    <script src="{{ asset('JS/script.js') }}"></script>
+	</body>
 </html>
