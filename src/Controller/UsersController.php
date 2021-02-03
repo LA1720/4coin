@@ -20,9 +20,7 @@ class UsersController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('users/index.html.twig', [
-            'controller_name' => 'UsersController',
-        ]);
+        return $this->render('users/index.html.twig');
     }
 
 
