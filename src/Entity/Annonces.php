@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\AnnoncesRepository;
+use App\Entity\Categories;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AnnoncesRepository;
+
 
 /**
  * @ORM\Entity(repositoryClass=AnnoncesRepository::class)
@@ -23,6 +25,7 @@ class Annonces
     private $title;
 
     /**
+     * @Gedmo\Mapping\Annotation\Slug(fields={"title"})
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
@@ -33,6 +36,7 @@ class Annonces
     private $content;
 
     /**
+     * @Gedmo\Mapping\Annotation\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $created_at;
@@ -49,10 +53,11 @@ class Annonces
     private $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity=categories::class, inversedBy="annonces")
+     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="annonces")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categories;
+
 
     public function getId(): ?int
     {
@@ -76,12 +81,6 @@ class Annonces
         return $this->slug;
     }
 
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
 
     public function getContent(): ?string
     {
@@ -100,12 +99,6 @@ class Annonces
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
-    {
-        $this->created_at = $created_at;
-
-        return $this;
-    }
 
     public function getActive(): ?bool
     {
