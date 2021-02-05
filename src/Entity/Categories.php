@@ -7,9 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=CategoriesRepository::class)
- */
+ */   
 class Categories
 {
     /**
@@ -25,6 +26,7 @@ class Categories
     private $name;
 
     /**
+     * @Gedmo\Mapping\Annotation\Slug(fields={"name"})
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
@@ -43,6 +45,11 @@ class Categories
     {
         $this->categories = new ArrayCollection();
         $this->annonces = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -67,12 +74,7 @@ class Categories
         return $this->slug;
     }
 
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
+   
 
     /**
      * @return Collection|Categories[]
