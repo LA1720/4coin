@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Categories;
 use App\Form\CategoriesType;
@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\RedirectController;
 
 /**
  * @Route("/admin", name="admin_")
+ * @package App\Controller\Admin
  */
 class AdminController extends AbstractController
 {

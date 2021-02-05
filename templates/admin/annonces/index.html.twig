@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les annonces{% endblock %}
+
+{% block body %}
+<h1>Gérer les annonces</h1>
+{# <a href="{{ path('admin_categories_ajout') }}" class="btn blue">Ajouter</a> #}
+<div class="responsive-table">
+  <table class="table striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Date</th>
+        <th>Active</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for annonce in annonces %}
+        
+      <tr>
+        <td>{{ annonce.id }}</td>
+        <td>{{ annonce.title }}</td>
+        <td>{{ annonce.createdAt|date }}</td>
+        <td>{{ annoncecode.active }}</td>
+        {# <td class="text-center">
+            <a href="{{ path('admin_categories_modifier', {id: categorie.id}) }}" class="btn blue">Modifier</a>
+        </td> #}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  
+</div>
+
+{% endblock %}
