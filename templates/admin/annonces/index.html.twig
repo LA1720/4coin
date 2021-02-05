@@ -24,10 +24,15 @@
         <td>{{ annonce.id }}</td>
         <td>{{ annonce.title }}</td>
         <td>{{ annonce.createdAt|date }}</td>
-        <td>{{ annoncecode.active }}</td>
-        {# <td class="text-center">
-            <a href="{{ path('admin_categories_modifier', {id: categorie.id}) }}" class="btn blue">Modifier</a>
-        </td> #}
+        <td>
+          <label class="form-switch mt-2">
+            <input type="checkbox" {{ (annonce.active) ? 'checked' : ''}} data-id="{{annonce.id}}">
+            <span class="slider"></span>
+          </label>
+        </td>
+        <td class="text-center">
+            {# <a href="{{ path('admin_categories_modifier', {id: categorie.id}) }}" class="btn blue">Modifier</a> #}
+        </td>
       </tr>
     {% endfor %}
     </tbody>
