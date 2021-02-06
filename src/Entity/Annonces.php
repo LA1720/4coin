@@ -76,6 +76,10 @@ class Annonces
         $this->images = new ArrayCollection();
         $this->favoris = new ArrayCollection();
     }
+    public function __toString()
+    {
+        return $this->images;
+    }
 
 
     public function getId(): ?int
@@ -208,6 +212,7 @@ class Annonces
 
         return $this;
     }
+    
 
     
 }
