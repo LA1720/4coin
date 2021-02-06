@@ -4,15 +4,14 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
-		{% for annonce in annonces %}
+{% for annonce in annonces %}
+    <div class="container">
 			<div class="card shadow-1 fx-row">
 				<div class="primary d-flex vcenter fx-center px-4">
-          <img src="{{ asset('uploads/images/annonces' ~ annonce.images[0].name) }}" 
-          alt="{{ annonce.title }}">
+         			 <img src="{{ asset('/uploads/images/annonces/' ~ annonce.images[0].name) }}" alt="{{ annonce.title }}">
 				</div>
 				<div class="flex fx-col fx-grow">
-					<div class="card-header">Header</div>
+					<div class="card-header">{{ annonce.title }}</div>
 					<div class="card-content">
 						<p>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -20,8 +19,7 @@
 					</div>
 				</div>
 			</div>
+    </div>
+{% endfor %}
 
-		</div>
-
-	{% endfor %}
 {% endblock %}

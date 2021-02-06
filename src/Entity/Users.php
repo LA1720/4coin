@@ -63,6 +63,11 @@ class Users implements UserInterface
      */
     private $favoris;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->annonces = new ArrayCollection();

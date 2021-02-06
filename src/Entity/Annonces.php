@@ -61,7 +61,7 @@ class Annonces
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="annonces", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="annonces", orphanRemoval=true,cascade={"persist"})
      */
     private $images;
 
