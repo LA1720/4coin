@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!
+{% block title %}4 coin
 {% endblock %}
 
 {% block body %}
@@ -8,7 +8,7 @@
 		{% for annonce in annonces %}
 			<div class="card shadow-1 fx-row">
 				<div class="primary d-flex vcenter fx-center px-4">
-          <img src="{{ asset('uploads/images/annonces' ~ annonce.images[0].name) }}" 
+          <img src="{{ asset('uploads/images/annonces/cococity.png') }}" 
           alt="{{ annonce.title }}">
 				</div>
 				<div class="flex fx-col fx-grow">
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 
-		</div>
 
 	{% endfor %}
+	</div>
 {% endblock %}
