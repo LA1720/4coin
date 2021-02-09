@@ -60,15 +60,17 @@ class Annonces
      */
     private $categories;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="annonces", orphanRemoval=true)
-     */
-    private $images;
+   
 
     /**
      * @ORM\ManyToMany(targetEntity=Users::class, inversedBy="favoris")
      */
     private $favoris;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="annonces", orphanRemoval=true, cascade={"persist"})
+     */
+    private $images;
 
     
     public function __construct()
@@ -155,6 +157,35 @@ class Annonces
         return $this;
     }
 
+
+
+   
+
+
+    /**
+     * @return Collection|Users[]
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Users $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Users $favori): self
+    {
+        $this->favoris->removeElement($favori);
+
+        return $this;
+    }
+
     /**
      * @return Collection|Images[]
      */
@@ -181,30 +212,6 @@ class Annonces
                 $image->setAnnonces(null);
             }
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Users[]
-     */
-    public function getFavoris(): Collection
-    {
-        return $this->favoris;
-    }
-
-    public function addFavori(Users $favori): self
-    {
-        if (!$this->favoris->contains($favori)) {
-            $this->favoris[] = $favori;
-        }
-
-        return $this;
-    }
-
-    public function removeFavori(Users $favori): self
-    {
-        $this->favoris->removeElement($favori);
 
         return $this;
     }

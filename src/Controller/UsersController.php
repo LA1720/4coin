@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Images;
 use App\Entity\Annonces;
 use App\Form\AnnoncesType;
 use App\Form\EditProfileType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\RedirectController;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
@@ -30,18 +31,36 @@ class UsersController extends AbstractController
     /**
      * @Route("/annonces/ajout", name="annonces_ajout")
      */
-    public function ajoutAnnonces(Request $request): Response
-    {   
+    public function ajoutAnnonce(Request $request)
+    {
         $annonce = new Annonces;
+
         $form = $this->createForm(AnnoncesType::class, $annonce);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-
-             $annonce->setUsers($this->getUser());
-             $annonce->setActive(false);
-
+            $annonce->setUsers($this->getUser());
+            $annonce->setActive(false);
+            // On récupère les images transmises
+            $images = $form->get('images')->getData();
+                
+            // On boucle sur les images
+            foreach($images as $image){
+                // On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()).'.'.$image->guessExtension();
+                
+                // On copie le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                
+                // On crée l'image dans la base de données
+                $img = new Images();
+                $img->setName($fichier);
+                $annonce->addImage($img);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($annonce);
             $em->flush();
@@ -49,12 +68,11 @@ class UsersController extends AbstractController
             return $this->redirectToRoute('users_home');
         }
 
-
         return $this->render('users/annonces/ajout.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
-
+    
 
 
     /**
