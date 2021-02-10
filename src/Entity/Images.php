@@ -28,6 +28,8 @@ class Images
      */
     private $annonces;
 
+   
+
     public function getId(): ?int
     {
         return $this->id;
@@ -56,4 +58,5 @@ class Images
 
         return $this;
     }
+    
 }

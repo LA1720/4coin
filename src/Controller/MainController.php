@@ -14,6 +14,7 @@ class MainController extends AbstractController
      */
     public function index(AnnoncesRepository $annoncesRepository): Response
     {
+
         return $this->render('main/index.html.twig', [
             'annonces' => $annoncesRepository->findBy(['active' => true], ['created_at' => 'desc']),
         ]);

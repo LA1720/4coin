@@ -60,7 +60,9 @@ class Annonces
      */
     private $categories;
 
-   
+
+ 
+
 
     /**
      * @ORM\ManyToMany(targetEntity=Users::class, inversedBy="favoris")
@@ -77,6 +79,10 @@ class Annonces
     {
         $this->images = new ArrayCollection();
         $this->favoris = new ArrayCollection();
+    }
+    public function __toString()
+    {
+        return $this->images;
     }
 
 
@@ -215,6 +221,7 @@ class Annonces
 
         return $this;
     }
+    
 
     
 }

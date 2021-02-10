@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Repository\AnnoncesRepository;
 
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,5 +30,6 @@ class AnnoncesController extends AbstractController
 
         return $this->render('annonces/details.html.twig', compact('annonce'));
     }
+
 
 }

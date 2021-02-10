@@ -23,11 +23,14 @@ class AnnoncesController extends AbstractController
      */
     public function activer(Annonces $annonce): Response
     {
+
         $annonce->setActive(($annonce->getActive())?false:true);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($annonce);
         $em->flush();
+
+
 
         return new Response("true");
     }
@@ -42,6 +45,9 @@ class AnnoncesController extends AbstractController
         $em->flush();
 
         $this->addFlash('message', 'Annonce supprimée avec succès');
+
         return $this->redirectToRoute('admin_home');
+
     }
 }
+

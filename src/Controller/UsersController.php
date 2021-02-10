@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Users;
+
+
 use App\Entity\Images;
 use App\Entity\Annonces;
 use App\Form\AnnoncesType;
@@ -13,7 +16,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\RedirectController;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+r
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
@@ -28,6 +33,7 @@ class UsersController extends AbstractController
     {
         return $this->render('users/index.html.twig');
     }
+
 
 
     /**
@@ -120,6 +126,7 @@ class UsersController extends AbstractController
         ]);
     }
     
+
 
 
     /**
