@@ -18,8 +18,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\RedirectController;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-r
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 /**
  * @Route("/users", name="users_")
