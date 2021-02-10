@@ -14,12 +14,15 @@
 	<body>
 		<header>
 			<nav class="navbar shadow-1 primary">
-				<a href=""{{ path('app_home')}}"" class="navbar-brand">4coin</a>
+				<a href="{{ path('app_home')}}" class="navbar-brand">4coins</a>
 				<div class="navbar-menu ml-auto">
-					<a class="navbar-link" href="#">Link 1</a>
-					<a class="navbar-link" href="#">Link 2</a>
-					<a class="navbar-link" href="#">Link 3</a>
-					<a class="navbar-link" href="#">Link 4</a>
+					<a class="navbar-link" href="{{ path('users_annonces_ajout') }}" >Ajouter une annonce</a>
+					<a class="navbar-link" href="{{ path('app_login') }}">Login</a>
+					<a class="navbar-link" href="{{ path('app_logout') }}">Déconnecter</a>
+					<a class="navbar-link" href="{{ path('app_register') }}">Registration</a>
+					<a class="navbar-link" href="{{ path('admin_home') }}">Admin</a>
+
+					
 				</div>
 			</nav>
 		</header>
@@ -29,7 +32,7 @@
 		</main>
 
 		<footer class="footer primary">
-			Copyright © 2020 - Example
+			Copyright © 2021 
 		</footer>
 		
 		<!-- Axentix JS minified version -->

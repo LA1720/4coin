@@ -15,7 +15,7 @@
 			<nav class="navbar shadow-1 primary">
 				<a href="{{ path('app_home')}}" class="navbar-brand">4coins</a>
 				<div class="navbar-menu ml-auto">
-					<a class="navbar-link" href="{{ path('users_annonces_ajout') }}" >Ajouter une annonce</a>
+					{# <a class="navbar-link" href="{{ path('users_annonces_ajout') }}" >Ajouter une annonce</a> #}
 					<a class="navbar-link" href="{{ path('app_login') }}">Login</a>
 					<a class="navbar-link" href="{{ path('app_logout') }}">Déconnecter</a>
 					
@@ -28,9 +28,10 @@
 				<button data-target="example-sidenav" class="sidenav-trigger">
 					<i class="fas fa-times"></i>
 				</button>
-				<a href="{{ path('app_home')}}" class="navbar-brand">4coins</a>
+				<img class="sidenav-logo dropshadow-1" src="your_img_path" alt="Logo"/>
 			</div>
 			<a href="{{ path('users_home') }}" class="sidenav-link active">Mon profile</a>
+			<a href="{{ path('admin_home') }}" class="sidenav-link active">Gérer les annonces</a>
 			
 		</div>
 
@@ -43,7 +44,6 @@
 
 		<footer class="footer primary">
 			Copyright © 2020 
-		</footer>
 
 		<!-- Axentix JS minified version -->
 		<script src="https://cdn.jsdelivr.net/npm/axentix@1.0.0/dist/js/axentix.min.js"></script>
